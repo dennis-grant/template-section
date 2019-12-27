@@ -1,0 +1,15 @@
+<project name="dts" default="compile" basedir=".">
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+	<property name="dist" location="dist"/>
+
+	<target name="compile">
+		<javac srcdir="${src}" destdir="${build}" classpath="${build}" listfiles="yes"
+	               source="1.4" target="1.4" debug="on">
+		</javac>
+		<copy todir="${build}" overwrite="true">
+			<fileset dir="${src}" includes="COPYING,COPYING.LESSER" />
+		</copy>
+		<jar destfile="${dist}/dts.jar" basedir="${build}"/>
+	</target>
+</project>
